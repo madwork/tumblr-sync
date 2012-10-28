@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'thread'
+
+$:.unshift(File.join(File.dirname(__FILE__), "/../lib"))
+require 'tumblr-sync'
+
+module TumblrSync
+  class Runner
+    CONCURRENCY = 8
+    
+    def initialize(arguments)
+      @arguments = arguments
+    end
+    
+    def run
+      parse_options
+      
+      @concurrency ||= CONCURRENCY
+      @tumblr = TumblrSync::Site.new(@arguments.last)
+      FileUtils.mkdir_p(@tumblr.host)
+      start = 0
+      number = 50
+      loop do 
+        images = @tumblr.images(start, number).each_slice(@concurrency)
+        images.each do |group|
+          threads = []
+          group.each do |url|
+            threads << Thread.new {
+              begin
+                file = @tumblr.agent.get(url)
+                if File.exists?("#{@tumblr.host}/#{file.filename}")
+                  puts "Already have #{url}"
+                else
+                  puts "Saving photo #{url}"
+                  file.save("#{@tumblr.host}/#{file.filename}")
+                end
+              rescue Mechanize::ResponseCodeError
+                puts "Error getting file, #{$!}"
+              end
+            }
+          end
+          threads.each{ |thread| thread.join }
+        end
+        if images.count < num
+          break
+        else
+          start += number
+        end
+      end
+    end
+    
+    private
+    
+    def parse_options
+      options = OptionParser.new
+      options.banner = "Usage: #{$0} [options] [tumblr]"
+      options.on('-c', '--concurrency NUMBER', "Specify how many threads you want (Default: #{CONCURRENCY})") { |concurrency| @concurrency = concurrency.to_i }
+      options.on('-h', '--help', "Show this message") { puts(options); exit }
+      # begin
+        raise StandardError if options.getopts.empty? && ARGV.empty?
+        options.parse!(@arguments)
+      # rescue
+      #   puts options
+      #   exit
+      # end
+    end
+  end
+end
+
+begin
+  runner = TumblrSync::Runner.new(ARGV)
+  runner.run
+rescue => ex
+  puts ex
+end
