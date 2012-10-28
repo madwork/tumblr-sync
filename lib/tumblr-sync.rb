@@ -13,13 +13,13 @@ module TumblrSync
     def images(start, number = 50)
       response = @agent.get("#@endpoint&start=#{start}&num=#{number}")
       doc = Nokogiri::XML.parse(response.body)
-      (doc/'post photo-url').map{ |photo_url| photo_url.content if photo_url['max-width'].to_i == 1280 }.compact
+      doc.xpath("//posts/post/photo-url[@max-width='1280']").map(&:text)
     end
     
     def total
       response = @agent.get(@endpoint)
       doc = Nokogiri::XML.parse(response.body)
-      (doc/'posts @total').first.value
+      doc.xpath("//posts/@total").text.to_i
     end
   end
 end
