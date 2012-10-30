@@ -78,5 +78,9 @@ module TumblrSync
   end
 end
 
-runner = TumblrSync::Runner.new(ARGV)
-runner.run
+begin
+  runner = TumblrSync::Runner.new(ARGV)
+  runner.run
+rescue Mechanize::ResponseCodeError, SocketError
+  puts "Tumblr API not found !"
+end
