@@ -47,11 +47,12 @@ module TumblrSync
                     end
                   end
                 rescue Mechanize::ResponseCodeError
+                ensure
+                  @progress.increment
                 end
               }
             end
             threads.each{ |thread| thread.join }
-            @progress.progress += group.size
           end
         end
       end
