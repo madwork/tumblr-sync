@@ -1,5 +1,3 @@
-require 'mechanize'
-
 module TumblrSync
   MAX = 50
   
