@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "tumblr-sync"
   gem.homepage = "http://github.com/madwork/tumblr-sync"
   gem.license = "MIT"
-  gem.summary = %Q{Synchronize photos from Thumblr blog}
-  gem.description = %Q{Synchronize photos from Thumblr blog.}
+  gem.summary = %Q{Synchronize pictures from a Thumblr blog}
+  gem.description = %Q{Synchronize pictures from a Thumblr blog, with multithreading}
   gem.email = "vincent.durand@madwork.org"
   gem.authors = ["Vincent Durand"]
   # dependencies defined in Gemfile
