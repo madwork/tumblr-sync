@@ -38,9 +38,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.2.0)
+  bundler (~> 1.2.1)
   jeweler (~> 1.8.4)
-  mechanize
+  mechanize (~> 2.5.1)
   minitest
-  ruby-progressbar
-  yard (~> 0.7)
+  ruby-progressbar (~> 1.0.2)
+  yard (~> 0.8.3)
