@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Vincent Durand"]
   s.date = "2012-11-02"
-  s.description = "Synchronize pictures from a Thumblr blog, with multithreading"
+  s.description = "Synchronize pictures from a Tumblr blog, with multithreading"
   s.email = "vincent.durand@madwork.org"
   s.executables = ["tumblr-sync"]
   s.extra_rdoc_files = [
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "Synchronize pictures from a Thumblr blog"
+  s.summary = "Synchronize pictures from a Tumblr blog"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
