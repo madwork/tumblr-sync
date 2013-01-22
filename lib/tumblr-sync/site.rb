@@ -2,6 +2,8 @@ module TumblrSync
   MAX = 50
   
   class Site
+    extend Forwardable
+    
     attr_reader :host
     
     # Example:
@@ -33,5 +35,7 @@ module TumblrSync
     def times(&block)
       (total.to_f / MAX + 0.5).round.times(&block)
     end
+
+    def_delegator :times, :count
   end
 end
