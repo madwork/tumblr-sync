@@ -1,7 +1,7 @@
-require 'helper'
+require 'minitest_helper'
 
-class TestTumblrSync < MiniTest::Unit::TestCase
-  def test_something_for_real
-    flunk "hey buddy, you should probably rename this file and start testing for real"
+class TestTumblrSync < Minitest::Test
+  def test_that_it_has_a_version_number
+    refute_nil ::TumblrSync::VERSION
   end
 end
