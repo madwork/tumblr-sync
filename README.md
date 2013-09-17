@@ -20,13 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-	tumblr-sync -h
-
 Synchronize some funny Tumblr with a lot of so cute catz !
 
 	tumblr-sync socutecatz.tumblr.com
 
-### Why ?
+## Why ?
 
 Ruby Multithreading and Queue testing for fun
 
