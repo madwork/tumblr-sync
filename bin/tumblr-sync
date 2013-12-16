@@ -1,11 +1,7 @@
 #!/usr/bin/env ruby
 
-$:.unshift(File.join(File.dirname(__FILE__), "/../lib"))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "/../lib"))
 require 'tumblr-sync'
 
-begin
-  runner = TumblrSync::Runner.new(ARGV)
-  runner.run
-rescue Mechanize::ResponseCodeError, SocketError
-  puts "Tumblr API not found !"
-end
+runner = TumblrSync::Runner.new(ARGV)
+runner.run

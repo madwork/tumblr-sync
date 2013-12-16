@@ -1,8 +1,8 @@
 # TumblrSync
 
-Tumblr Synchronization
+MultiThread Tumblr Synchronization
 
-You like download and fill your hard drive with tons of funny pictures, this is the tool for you!
+You like download and fill your hard drive with tons of funny pictures, this tool is for you!
 
 ## Install
 
@@ -12,9 +12,13 @@ You like download and fill your hard drive with tons of funny pictures, this is 
 
 	tumblr-sync -h
 
-Synchronize some funny Tumblr with a lot of so cute catz!
+Synchronize some funny tumblr with a lot of so cute catz!
 
 	tumblr-sync socutecatz.tumblr.com
+
+## Why ?
+
+Ruby Multithreading and Queue testing for fun
 
 ## Contributing
 
