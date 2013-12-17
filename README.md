@@ -1,37 +1,22 @@
-# tumblr-sync
+# TumblrSync
 
 MultiThread Tumblr Synchronization
 
-You like download and fill your hard drive with tons of funny pictures, this is the tool for you!
+You like download and fill your hard drive with tons of funny pictures, this tool is for you!
 
-## Installation
+## Install
 
-Add this line to your application's Gemfile:
-
-    gem 'tumblr-sync'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tumblr-sync
+	gem install tumblr-sync
 
 ## Usage
 
-Synchronize some funny Tumblr with a lot of so cute catz !
+Synchronize some funny tumblr with a lot of so cute catz!
 
 	tumblr-sync socutecatz.tumblr.com
 
 ## Why ?
 
 Ruby Multithreading and Queue testing for fun
-
-## Todo
-
-* Improve multithreading
-* Add some tests (han! there's no tests! so wrong…)
 
 ## Contributing
 
@@ -40,7 +25,3 @@ Ruby Multithreading and Queue testing for fun
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-## Copyright
-
-Copyright (c) 2013 Vincent Durand. See LICENSE.txt for further details.

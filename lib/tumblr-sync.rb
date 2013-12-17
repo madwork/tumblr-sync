@@ -1,6 +1,9 @@
-require 'mechanize'
+require 'tumblr-sync/version'
+require 'net/http'
+require 'uri'
 
 module TumblrSync
-  autoload :Runner, 'tumblr-sync/runner'
-  autoload :Site,   'tumblr-sync/site'
+  autoload :Tumblr,       'tumblr-sync/tumblr'
+  autoload :Runner,       'tumblr-sync/runner'
+  autoload :PhotoFetcher, 'tumblr-sync/photo_fetcher'
 end
