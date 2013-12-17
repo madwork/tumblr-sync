@@ -14,14 +14,14 @@ module TumblrSync
     end
 
     def images(start, number = MAX)
-      http = HTTP.get endpoint, params: { type: :photo, start: start, num: number }
-      doc = Nokogiri::XML.parse http.response.body
-      doc.xpath("//posts/post/photo-url[@max-width='1280']").map(&:text)
+      response = Net::HTTP.get_response uri_endpoint(type: :photo, start: start, num: number)
+      doc = Nokogiri::XML.parse response.body
+      doc.xpath("//posts/post/photo-url[@max-width='1280']").map { |url| url.text.strip }
     end
 
     def total
-      http = HTTP.get endpoint, params: { type: :photo }
-      doc = Nokogiri::XML.parse http.response.body
+      response = Net::HTTP.get_response uri_endpoint(type: :photo)
+      doc = Nokogiri::XML.parse response.body
       doc.xpath("//posts/@total").text.to_i
     end
 
@@ -34,6 +34,12 @@ module TumblrSync
 
     def endpoint
       "http://#{host}/api/read"
+    end
+
+    def uri_endpoint(params = {})
+      URI.parse(endpoint).tap do |uri|
+        uri.query = URI.encode_www_form params
+      end
     end
   end
 end

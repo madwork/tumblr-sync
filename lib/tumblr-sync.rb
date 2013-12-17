@@ -1,5 +1,6 @@
 require 'tumblr-sync/version'
-require 'http'
+require 'net/http'
+require 'uri'
 
 module TumblrSync
   autoload :Tumblr,       'tumblr-sync/tumblr'

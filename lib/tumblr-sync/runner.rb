@@ -31,8 +31,12 @@ module TumblrSync
             threads = []
             group.each do |url|
               threads << Thread.new {
-                photo_fetcher.fetch url
-                progress_bar.increment
+                begin
+                  photo_fetcher.fetch url
+                rescue Mechanize::ResponseCodeError
+                ensure
+                  progress_bar.increment
+                end
               }
             end
             threads.each(&:join)
