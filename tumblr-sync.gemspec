@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = TumblrSync::VERSION
   spec.author        = "Vincent Durand"
   spec.email         = "vincent.durand@madwork.org"
-  spec.description   = "Synchronize pictures from a Tumblr blog with ease and fast!"
+  spec.description   = "Synchronize pictures from a Tumblr blog with ease and faster than ever!"
   spec.summary       = "Synchronize pictures from a Tumblr blog"
   spec.license       = "MIT"
 
