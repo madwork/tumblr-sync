@@ -1,5 +1,8 @@
 # TumblrSync
 
+[![Build Status](https://travis-ci.org/madwork/tumblr-sync.png)](https://travis-ci.org/madwork/tumblr-sync)
+[![Gem Version](https://badge.fury.io/rb/tumblr-sync.png)](http://badge.fury.io/rb/tumblr-sync)
+
 MultiThread Tumblr Synchronization
 
 You like download and fill your hard drive with tons of funny pictures, this tool is for you!
