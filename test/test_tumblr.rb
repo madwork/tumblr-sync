@@ -24,8 +24,14 @@ describe TumblrSync::Tumblr do
   end
 
   it "should get array of images" do
-    stub_request(:get, "foo.tumblr.com/api/read").with(query: { type: :photo, start: 0, num: 2 }).to_return(body: File.new('test/fixtures/api.xml'), status: 200)
-    tumblr.images(0, 2).must_equal ["http://24.media.tumblr.com/tumblr_mebokdGrmq1rjwt7po1_500.jpg", "http://25.media.tumblr.com/tumblr_mebojvwCIb1rjwt7po1_500.jpg"]
+    stub_request(:get, "foo.tumblr.com/api/read").with(query: { type: :photo, start: 0, num: 10 }).to_return(body: File.new('test/fixtures/api.xml'), status: 200)
+    tumblr.images(0, 10).must_equal [
+      ["http://24.media.tumblr.com/tumblr_mebokdGrmq1rjwt7po1_500.jpg"],
+      ["http://25.media.tumblr.com/tumblr_mebojvwCIb1rjwt7po1_500.jpg"],
+      ["http://40.media.tumblr.com/7bf3bc523a3c0f99ad095bb048ec7f05/tumblr_nlvyfb7Fm41r3bmeoo1_1280.jpg",
+       "http://36.media.tumblr.com/4904f4db02d987c12b215a2845a7294b/tumblr_nlvyfb7Fm41r3bmeoo3_1280.jpg",
+       "http://40.media.tumblr.com/24070cfbdeed18e81b025b1fa76c5ccd/tumblr_nlvyfb7Fm41r3bmeoo2_1280.jpg"],
+    ]
   end
 
   it "should get total of images" do

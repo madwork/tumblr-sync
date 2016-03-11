@@ -29,15 +29,18 @@ module TumblrSync
           images = queue.pop
           images.each_slice(10).each do |group|
             threads = []
-            group.each do |url|
-              threads << Thread.new {
-                begin
-                  photo_fetcher.fetch url
-                rescue Mechanize::ResponseCodeError
-                ensure
-                  progress_bar.increment
-                end
-              }
+            group.each do |urls|
+              progress_bar.total += (urls.size - 1)
+              urls.each do |url|
+                threads << Thread.new {
+                  begin
+                    photo_fetcher.fetch url
+                  rescue Mechanize::ResponseCodeError
+                  ensure
+                    progress_bar.increment
+                  end
+                }
+              end
             end
             threads.each(&:join)
           end

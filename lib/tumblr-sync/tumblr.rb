@@ -16,7 +16,7 @@ module TumblrSync
     def images(start, number = MAX)
       response = Net::HTTP.get_response uri_endpoint(type: :photo, start: start, num: number)
       doc = Nokogiri::XML.parse response.body
-      doc.xpath("//posts/post/photo-url[@max-width='1280']").map { |url| url.text.strip }
+      doc.xpath("//posts/post").map{|post| post.xpath(".//photo-url[@max-width='1280']").map { |url| url.text.strip }.uniq }
     end
 
     def total
